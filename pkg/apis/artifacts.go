@@ -1,4 +1,4 @@
 package apis
 
-type Artifacts interface {
+type Artifacts struct {
 }
