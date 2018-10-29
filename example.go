@@ -1,13 +1,18 @@
-package artifacts
+package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/xplaceholder/artifacts/pkg/api/manifests"
+	"github.com/xplaceholder/artifacts/pkg/api/resources"
+)
 
 func main() {
 	// Below code will be executed by checker, the checker determines what resource will be created
-	lb := LoadBalancer{
+	lb := resources.LoadBalancer{
 		SKU: "standard",
 	}
-	vmGroups := []VMGroup{
+	vmGroups := []resources.VMGroup{
 		{
 			Name:  "group1",
 			Count: 2,
@@ -18,11 +23,12 @@ func main() {
 			Name:  "group2",
 			Count: 3,
 			SKU:   "Standard_D2_v2",
+			Type:  "VMSS",
 		},
 	}
 	// The checker add needed resource to manifest
-	manifest := InfraManifest{
-		LoadBalancer: lb,
+	manifest := manifests.InfraManifest{
+		LoadBalancer: &lb,
 		VMGroups:     vmGroups,
 	}
 	// The checker convert the object to yaml bytes
@@ -39,7 +45,7 @@ func main() {
 	// ...
 
 	// The infra module new a manifest object using yaml bytes
-	im, err := NewInfraManifestFromYAML(b)
+	im, err := manifests.NewInfraManifestFromYAML(b)
 	if err != nil {
 		fmt.Println(err)
 		return
