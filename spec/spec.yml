@@ -16,11 +16,10 @@ vm_groups:
     type: vm # this can be vm or vmss
     storage:
       os_disk:
-        size: 10G
+        size: 10240
       data_disks:
-        - size: 100G
-        # - name_convension: uuid # this canbe uuid/group, if uuid, one uuid would be gnerated as name, if 
-        #   size: 100G
+        - size: 102400
+        # - name_convension: uuid # this canbe uuid/group, if uuid, one uuid would be gnerated as name
       azure_files:
         - storage_account: storage_account_1
           name: azure_file_1
@@ -39,9 +38,9 @@ vm_groups:
     sku: Standard_D2_v3
     type: vm # this can be vm or vmss
     os_disk:
-      size: 10G
+      size: 10240
     data_disks:
-      - size: 100G
+      - size: 102400
       # name_convension: uuid   
     networks:
       - name: network1
