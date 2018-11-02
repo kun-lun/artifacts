@@ -4,9 +4,7 @@ To be added.
 
 # Example YAML files
 
-[Infra example YAML file](./infra.yml)
-
-[Deploy example YAML file](./deploy.yml)
+[Example YAML file](./spec.yml)
 
 # Changing
 
