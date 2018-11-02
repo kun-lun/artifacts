@@ -1,0 +1,96 @@
+---
+schema: v0.1
+region: eastus
+
+iaas: azure # this can be azure or some other platform
+
+platform:
+  type: tomcat/golang/python/java/php/nodejs
+
+vm_groups:
+  - name: jumpbox
+    meta:
+      autostop: false
+    count: 1
+    sku: Standard_DS1_v1
+    type: vm # this can be vm or vmss
+    storage:
+      os_disk:
+        size: 10G
+      data_disks:
+        - size: 100G
+        # - name_convension: uuid # this canbe uuid/group, if uuid, one uuid would be gnerated as name, if 
+        #   size: 100G
+      azure_files:
+        - storage_account: storage_account_1
+          name: azure_file_1
+          mount_point: /mnt/azurefile_1
+    network:
+      - name: network1
+    security_groups:
+      - name: security_group_1
+    roles:
+      - name: builtin/jumpbox
+
+  - name: d2v3_group
+    meta:
+      autostop: false
+    count: 2
+    sku: Standard_D2_v3
+    type: vm # this can be vm or vmss
+    os_disk:
+      size: 10G
+    data_disks:
+      - size: 100G
+      # name_convension: uuid   
+    network:
+      - name: network1
+        load_balancer: load_balancer_1
+      - name: network2
+    roles: # this is used to generate the deployment scripts
+      - name: builtin/php
+        tags: ["foo"]
+        vars:
+          dir: '/opt/a'
+          app_port: 5000
+      - name: myproject/role
+        tags: ["bar"]
+        vars:
+          dir: '/opt/a'
+          app_port: 5000
+
+networks:
+  - name: network1
+    vnet: vnet-1
+    subnets:
+      - name: 
+        range: 10.10.0.0/24
+        gateway: 10.10.0.1
+
+load_balancer:
+  - name: load_balancer_1
+    sku: Standard
+
+services:
+  storage_account:
+    name: storage_account_1
+    location: eastus
+    sku: standard
+  # this is only for the service based database, if you want to deploy the iaas version.
+  # please use the roles instead.
+  database:
+    migrate_from: # indicate where we should migrate from.
+      origin_host: asd
+      origin_database: asd
+      origin_username: asd
+      origin_password: asd
+    engine: mysql
+    engine_version: "5.7"
+    cores: 2
+    storage: 5
+    backup_retention_days: 35
+    username: "binxi"
+    password: "abcd1234!"
+
+
+
