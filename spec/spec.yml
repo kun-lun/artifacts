@@ -72,25 +72,25 @@ load_balancer:
     sku: Standard
 
 services:
-  storage_account:
-    name: storage_account_1
-    location: eastus
-    sku: standard
-  # this is only for the service based database, if you want to deploy the iaas version.
-  # please use the roles instead.
-  database:
-    migrate_from: # indicate where we should migrate from.
-      origin_host: asd
-      origin_database: asd
-      origin_username: asd
-      origin_password: asd
-    engine: mysql
-    engine_version: "5.7"
-    cores: 2
-    storage: 5
-    backup_retention_days: 35
-    username: "binxi"
-    password: "abcd1234!"
+  storage_accounts:
+    - name: storage_account_1
+      location: eastus
+      sku: standard
+    # this is only for the service based database, if you want to deploy the iaas version.
+    # please use the roles instead.
+  databases:
+    - migrate_from: # indicate where we should migrate from.
+        origin_host: asd
+        origin_database: asd
+        origin_username: asd
+        origin_password: asd
+      engine: mysql
+      engine_version: "5.7"
+      cores: 2
+      storage: 5
+      backup_retention_days: 35
+      username: "binxi"
+      password: "abcd1234!"
 
 
 
