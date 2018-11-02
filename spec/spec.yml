@@ -43,7 +43,7 @@ vm_groups:
     data_disks:
       - size: 100G
       # name_convension: uuid   
-    network:
+    networks:
       - name: network1
         load_balancer: load_balancer_1
       - name: network2
@@ -67,7 +67,7 @@ networks:
         range: 10.10.0.0/24
         gateway: 10.10.0.1
 
-load_balancer:
+load_balancers:
   - name: load_balancer_1
     sku: Standard
 
