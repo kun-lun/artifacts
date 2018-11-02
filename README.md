@@ -1,9 +1,9 @@
 # Artifacts
-[![Build Status](https://xplaceholderci.gugagaga.fun/buildStatus/icon?job=xplaceholder/artifacts/draft)](https://xplaceholderci.gugagaga.fun/job/xplaceholder/job/artifacts/job/draft/)
+[![Build Status](https://xplaceholderci.gugagaga.fun/buildStatus/icon?job=kun-lun/artifacts/draft)](https://xplaceholderci.gugagaga.fun/job/kun-lun/job/artifacts/job/draft/)
 
-[![GoDoc](https://godoc.org/github.com/xplaceholder/artifacts?status.svg)](https://godoc.org/github.com/xplaceholder/artifacts)
+[![GoDoc](https://godoc.org/github.com/kun-lun/artifacts?status.svg)](https://godoc.org/github.com/kun-lun/artifacts)
 
-[![Go Report Card](https://goreportcard.com/badge/xplaceholder/artifacts)](https://goreportcard.com/report/xplaceholder/artifacts)
+[![Go Report Card](https://goreportcard.com/badge/kun-lun/artifacts)](https://goreportcard.com/report/kun-lun/artifacts)
 
 # Example usage
 
