@@ -15,6 +15,11 @@ vm_groups:
     sku: Standard_DS1_v1
     type: vm # this can be vm or vmss
     storage:
+      image:
+        offer: offer1
+        publisher: ubuntu
+        sku: sku1
+        version: latest
       os_disk:
         size: 10240
       data_disks:
