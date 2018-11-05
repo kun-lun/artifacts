@@ -120,7 +120,7 @@ func main() {
 			Cores:               2,
 			Storage:             5,
 			BackupRetentionDays: 35,
-			Username:            "binxi",
+			Username:            "dbuser",
 			Password:            "abcd1234!",
 		},
 	}
