@@ -1,5 +1,7 @@
 package apis
 
+import "github.com/kun-lun/artifacts/pkg/apis/outputs"
+
 // VMGroup contains needed information to create a set of VMs on Azure. VMs in the group
 // will have the same SKU, using the same subnet.
 type VMGroup struct {
@@ -30,8 +32,9 @@ type VMNetWork struct {
 }
 
 type VMNetworkInfo struct {
-	SubnetName       string `yaml:"subnet_name"`
-	LoadBalancerName string `yaml:"load_balancer_name"`
+	SubnetName       string                    `yaml:"subnet_name"`
+	LoadBalancerName string                    `yaml:"load_balancer_name"`
+	Outputs          []outputs.VMNetworkOutput `yaml:"outputs"` // this is an array because this can be used in a vm group and count > 1
 }
 
 const (
