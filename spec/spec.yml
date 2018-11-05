@@ -29,11 +29,11 @@ vm_groups:
         - storage_account: storage_account_1
           name: azure_file_1
           mount_point: /mnt/azurefile_1
-      networks:
-        - subnet_name: snet-1
-          load_balancer_name: load_balancer_1
-          outputs:
-            - ip: 192.168.0.3
+    networks:
+      - subnet_name: snet-1
+        load_balancer_name: load_balancer_1
+        outputs:
+          - ip: 192.168.0.3
     security_groups:
       - name: security_group_1
     roles:
@@ -45,11 +45,12 @@ vm_groups:
     count: 2
     sku: Standard_D2_v3
     type: vm # this can be vm or vmss
-    os_disk:
-      size: 10240
-    data_disks:
-      - size: 102400
-      # name_convension: uuid
+    storage:
+      os_disk:
+        size: 10240
+      data_disks:
+        - size: 102400
+        # name_convension: uuid
     networks:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
