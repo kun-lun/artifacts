@@ -29,9 +29,9 @@ vm_groups:
         - storage_account: storage_account_1
           name: azure_file_1
           mount_point: /mnt/azurefile_1
-      network:
-        subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      networks:
+        - subnet_name: snet-1
+          load_balancer_name: load_balancer_1
     security_groups:
       - name: security_group_1
     roles:
@@ -47,10 +47,10 @@ vm_groups:
       size: 10240
     data_disks:
       - size: 102400
-      # name_convension: uuid   
-    network:
-      subnet_name: snet-1
-      load_balancer_name: load_balancer_1
+      # name_convension: uuid
+    networks:
+      - subnet_name: snet-1
+        load_balancer_name: load_balancer_1
     roles: # this is used to generate the deployment scripts
       - name: builtin/php
         tags: ["foo"]
