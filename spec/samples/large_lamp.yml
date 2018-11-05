@@ -22,9 +22,8 @@ vm_groups:
         size: 10240
       data_disks:
         - size: 102400
-    networks:
-      subnet: 
-        name: snet-1
+    network:
+      subnet_name: snet-1
     security_groups:
       - name: security_group_1
     roles:
@@ -39,11 +38,9 @@ vm_groups:
     data_disks:
       - size: 102400
       # name_convension: uuid   
-    networks:
-      subnet: 
-        name: snet-1
-      load_balancer: 
-        name: load_balancer_1
+    network:
+      subnet_name: snet-1
+      load_balancer_name: load_balancer_1
     roles: # this is used to generate the deployment scripts
       - name: builtin/lamp_web_role
   
@@ -56,11 +53,9 @@ vm_groups:
     data_disks:
       - size: 102400
       # name_convension: uuid   
-    networks:
-      subnet: 
-        name: snet-1
-      load_balancer: 
-        name: load_balancer_1
+    network:
+      subnet_name: snet-1
+      load_balancer_name: load_balancer_1
     roles: # this is used to generate the deployment scripts
       - name: builtin/gluster_server_node
 
@@ -73,11 +68,9 @@ vm_groups:
     data_disks:
       - size: 102400
       # name_convension: uuid   
-    networks:
-      subnet: 
-        name: snet-1
-      load_balancer: 
-        name: load_balancer_1
+    network:
+      subnet_name: snet-1
+      load_balancer_name: load_balancer_1
     roles: # this is used to generate the deployment scripts
       - name: builtin/redis_server
 
