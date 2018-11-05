@@ -32,6 +32,8 @@ vm_groups:
       networks:
         - subnet_name: snet-1
           load_balancer_name: load_balancer_1
+          outputs:
+            - ip: 192.168.0.3
     security_groups:
       - name: security_group_1
     roles:
@@ -51,6 +53,9 @@ vm_groups:
     networks:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
+        outputs:
+          - ip: 192.168.0.5
+          - ip: 192.168.0.6
     roles: # this is used to generate the deployment scripts
       - name: builtin/php
         tags: ["foo"]
