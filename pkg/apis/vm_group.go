@@ -1,6 +1,9 @@
 package apis
 
-import "github.com/kun-lun/artifacts/pkg/apis/outputs"
+import (
+	"github.com/kun-lun/artifacts/pkg/apis/deployments"
+	"github.com/kun-lun/artifacts/pkg/apis/outputs"
+)
 
 // VMGroup contains needed information to create a set of VMs on Azure. VMs in the group
 // will have the same SKU, using the same subnet.
@@ -13,6 +16,9 @@ type VMGroup struct {
 	Storage      *VMStorage       `yaml:"storage"`
 	NetworkInfos []VMNetworkInfo  `yaml:"networks"`
 	Networks     []VMNetWork      `yaml:"anything,skip"`
+
+	// Deployments
+	Roles []deployments.Role `yaml:"roles"`
 }
 
 type VMGroupMetaData struct {
