@@ -35,6 +35,9 @@ func (m *Manifest) autofill() error {
 				if network.Subnet != nil {
 					vmGroup.NetworkInfos[i].SubnetName = network.Subnet.Name
 				}
+				if len(network.Outputs) > 0 {
+					vmGroup.NetworkInfos[i].Outputs = append([]VMNetworkOutput(nil), network.Outputs...)
+				}
 			}
 		} else if len(vmGroup.NetworkInfos) > 0 {
 			vmGroup.Networks = make([]VMNetWork, len(vmGroup.NetworkInfos))
@@ -64,6 +67,9 @@ func (m *Manifest) autofill() error {
 					if !found {
 						return fmt.Errorf("Can't found subnet with given name: %s", vmn.SubnetName)
 					}
+				}
+				if len(vmn.Outputs) > 0 {
+					vmGroup.Networks[i].Outputs = append([]VMNetworkOutput(nil), vmn.Outputs...)
 				}
 			}
 		}

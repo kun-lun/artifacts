@@ -1,10 +1,5 @@
 package apis
 
-import (
-	"github.com/kun-lun/artifacts/pkg/apis/deployments"
-	"github.com/kun-lun/artifacts/pkg/apis/outputs"
-)
-
 // VMGroup contains needed information to create a set of VMs on Azure. VMs in the group
 // will have the same SKU, using the same subnet.
 type VMGroup struct {
@@ -16,9 +11,7 @@ type VMGroup struct {
 	Storage      *VMStorage       `yaml:"storage"`
 	NetworkInfos []VMNetworkInfo  `yaml:"networks"`
 	Networks     []VMNetWork      `yaml:"anything,skip"`
-
-	// Deployments
-	Roles []deployments.Role `yaml:"roles"`
+	Roles        []Role           `yaml:"roles"`
 }
 
 type VMGroupMetaData struct {
@@ -35,12 +28,17 @@ type VMStorage struct {
 type VMNetWork struct {
 	Subnet       *Subnet
 	LoadBalancer *LoadBalancer
+	Outputs      []VMNetworkOutput
 }
 
 type VMNetworkInfo struct {
-	SubnetName       string                    `yaml:"subnet_name"`
-	LoadBalancerName string                    `yaml:"load_balancer_name"`
-	Outputs          []outputs.VMNetworkOutput `yaml:"outputs"` // this is an array because this can be used in a vm group and count > 1
+	SubnetName       string            `yaml:"subnet_name"`
+	LoadBalancerName string            `yaml:"load_balancer_name"`
+	Outputs          []VMNetworkOutput `yaml:"outputs,skipempty"`
+}
+
+type VMNetworkOutput struct {
+	IP string `yaml:"ip"`
 }
 
 const (
