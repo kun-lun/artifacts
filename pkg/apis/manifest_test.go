@@ -6,7 +6,6 @@ import (
 
 	"github.com/go-test/deep"
 	. "github.com/kun-lun/artifacts/pkg/apis"
-	"github.com/kun-lun/artifacts/pkg/apis/deployments"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -96,7 +95,7 @@ var _ = Describe("Manifest", func() {
 						NetworkSecurityGroupName: networkSecurityGroups[0].Name,
 					},
 				},
-				Roles: []deployments.Role{},
+				Roles: []Role{},
 			},
 			{
 				Name:  "d2v3_group",
@@ -120,7 +119,7 @@ var _ = Describe("Manifest", func() {
 						LoadBalancerName: loadBalancers[0].Name,
 					},
 				},
-				Roles: []deployments.Role{},
+				Roles: []Role{},
 			},
 		}
 
