@@ -9,7 +9,7 @@ import (
 type Manifest struct {
 	Schema          string           `yaml:"schema,omitempty"`
 	IaaS            string           `yaml:"iaas,omitempty"`
-	CloudMeta       yaml.MapSlice    `yaml:"cloud_meta"`
+	Location        string           `yaml:"location"`
 	Platform        *Platform        `yaml:"platform,omitempty"`
 	VMGroups        []VMGroup        `yaml:"vm_groups,omitempty"`
 	Networks        []Network        `yaml:"networks,omitempty"`

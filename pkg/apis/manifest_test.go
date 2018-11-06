@@ -8,7 +8,6 @@ import (
 	. "github.com/kun-lun/artifacts/pkg/apis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	yaml "gopkg.in/yaml.v2"
 )
 
 var _ = Describe("Manifest", func() {
@@ -38,12 +37,7 @@ var _ = Describe("Manifest", func() {
 		loadBalancers := []LoadBalancer{
 			{
 				Name: "kunlun-wenserver-lb",
-				CloudMeta: []yaml.MapItem{
-					{
-						Key:   "sku",
-						Value: LoadBalancerStandardSKU,
-					},
-				},
+				SKU:  "standard",
 			},
 		}
 
@@ -114,16 +108,9 @@ var _ = Describe("Manifest", func() {
 
 		storageAccounts := []StorageAccount{
 			{
-				Name: "storage_account_1",
-				CloudMeta: []yaml.MapItem{
-					{
-						Key:   "sku",
-						Value: "standard",
-					}, {
-						Key:   "location",
-						Value: "eastus",
-					},
-				},
+				Name:     "storage_account_1",
+				SKU:      "standard",
+				Location: "eastus",
 			},
 		}
 
@@ -147,14 +134,9 @@ var _ = Describe("Manifest", func() {
 
 		// The checker add needed resource to manifest
 		m = &Manifest{
-			Schema: "v0.1",
-			IaaS:   "azure",
-			CloudMeta: []yaml.MapItem{
-				{
-					Key:   "location",
-					Value: "eastus",
-				},
-			},
+			Schema:          "v0.1",
+			IaaS:            "azure",
+			Location:        "eastus",
 			Platform:        &platform,
 			VMGroups:        vmGroups,
 			Networks:        networks,
