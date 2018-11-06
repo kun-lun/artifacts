@@ -1,7 +1,9 @@
 package apis
 
+import yaml "gopkg.in/yaml.v2"
+
 type Subnet struct {
-	Name    string `yaml:"name"`
-	Range   string `yaml:"range"`
-	Gateway string `yaml:"gateway"`
+	Range     string        `yaml:"range"`
+	Gateway   string        `yaml:"gateway"`
+	CloudMeta yaml.MapSlice `yaml:"cloud_meta"`
 }

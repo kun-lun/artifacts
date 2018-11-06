@@ -1,18 +1,20 @@
 ---
 schema: v0.1
-region: eastus
 
 iaas: azure # this can be azure or some other platform
+
+cloud_meta:
+  location: eastus
 
 platform:
   type: tomcat/golang/python/java/php/nodejs
 
 vm_groups:
   - name: jumpbox
-    meta:
+    cloud_meta:
       autostop: false
+      sku: Standard_DS1_v1
     count: 1
-    sku: Standard_DS1_v1
     type: vm # this can be vm or vmss
     storage:
       image:
@@ -52,8 +54,10 @@ vm_groups:
         - size: 102400
         # name_convension: uuid
     networks:
-      - subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      - name: network1
+        cloud_meta:
+          subnet: snet-1
+          load_balancer: load_balancer_1
         outputs:
           - ip: 192.168.0.5
           - ip: 192.168.0.6
@@ -69,21 +73,27 @@ vm_groups:
           dir: '/opt/a'
           app_port: 5000
 
-vnets:
-  - name: vnet-1
+networks:
+  - name: network1
+    type: vnet
+    cloud_meta:
+      virtual_network_name: vnet1
     subnets:
-      - name: snet-1
-        range: 10.10.0.0/24
+      - range: 10.10.0.0/24
         gateway: 10.10.0.1
+        cloud_meta:
+          name: snet-1
 
 load_balancers:
   - name: load_balancer_1
-    sku: Standard
+      cloud_meta:
+        sku: Standard
 
 storage_accounts:
   - name: storage_account_1
-    location: eastus
-    sku: standard
+    cloud_meta:
+      location: eastus
+      sku: standard
   # this is only for the service based database, if you want to deploy the iaas version.
   # please use the roles instead.
 databases:
