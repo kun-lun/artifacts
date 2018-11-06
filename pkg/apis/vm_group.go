@@ -34,7 +34,7 @@ type VMNetWork struct {
 type VMNetworkInfo struct {
 	SubnetName       string            `yaml:"subnet_name"`
 	LoadBalancerName string            `yaml:"load_balancer_name"`
-	Outputs          []VMNetworkOutput `yaml:"outputs,skipempty"`
+	Outputs          []VMNetworkOutput `yaml:"outputs,omitempty"`
 }
 
 type VMNetworkOutput struct {
