@@ -1,4 +1,4 @@
-package deployments
+package apis
 
 import yaml "gopkg.in/yaml.v2"
 
