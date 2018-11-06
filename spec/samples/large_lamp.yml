@@ -78,7 +78,6 @@ vm_groups:
 
 networks:
   - name: network1
-    type: vnet
     virtual_network_name: vnet1
     subnets:
       - range: 10.10.0.0/24
