@@ -1,14 +1,10 @@
 package apis
 
-import (
-	"gopkg.in/yaml.v2"
-)
-
 // VMGroup contains needed information to create a set of VMs on Azure. VMs in the group
 // will have the same SKU, using the same subnet.
 type VMGroup struct {
 	Name         string          `yaml:"name"`
-	CloudMeta    yaml.MapSlice   `yaml:"cloud_meta,omitempty"`
+	SKU          string          `yaml:"sku"`
 	Count        int             `yaml:"count"`
 	Type         string          `yaml:"type"`
 	Storage      *VMStorage      `yaml:"storage"`
@@ -24,9 +20,10 @@ type VMStorage struct {
 }
 
 type VMNetworkInfo struct {
-	Name      string            `yaml:"name"`
-	CloudMeta yaml.MapSlice     `yaml:"cloud_meta"`
-	Outputs   []VMNetworkOutput `yaml:"outputs,omitempty"`
+	Name             string            `yaml:"name"`
+	SubnetName       string            `yaml:"subnet_name"`
+	LoadBalancerName string            `yaml:"load_balancer_name"`
+	Outputs          []VMNetworkOutput `yaml:"outputs,omitempty"`
 }
 
 type VMNetworkOutput struct {
