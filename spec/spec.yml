@@ -12,7 +12,6 @@ platform:
 vm_groups:
   - name: jumpbox
     cloud_meta:
-      autostop: false
       sku: Standard_DS1_v1
     count: 1
     type: vm # this can be vm or vmss
@@ -32,8 +31,10 @@ vm_groups:
           name: azure_file_1
           mount_point: /mnt/azurefile_1
     networks:
-      - subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      - name: network1
+        cloud_meta:
+          subnet_name: snet-1
+          load_balancer_name: load_balancer_1
         outputs:
           - ip: 192.168.0.3
     security_groups:
@@ -42,10 +43,9 @@ vm_groups:
       - name: builtin/jumpbox
 
   - name: d2v3_group
-    meta:
-      autostop: false
     count: 2
-    sku: Standard_D2_v3
+    cloud_meta:
+      sku: Standard_DS1_v1
     type: vm # this can be vm or vmss
     storage:
       os_disk:
@@ -56,8 +56,8 @@ vm_groups:
     networks:
       - name: network1
         cloud_meta:
-          subnet: snet-1
-          load_balancer: load_balancer_1
+          subnet_name: snet-1
+          load_balancer_name: load_balancer_1
         outputs:
           - ip: 192.168.0.5
           - ip: 192.168.0.6

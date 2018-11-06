@@ -1,8 +1,9 @@
 ---
 schema: v0.1
-region: eastus
-
 iaas: azure # this can be azure or some other platform
+
+cloud_meta:
+  location: eastus
 
 platform:
   type: lamp
@@ -10,7 +11,8 @@ platform:
 vm_groups:
   - name: jumpbox
     count: 1
-    sku: Standard_B1ms
+    cloud_meta:
+      sku: Standard_B1ms
     type: vm # this can be vm or vmss
     storage:
       image:
@@ -23,7 +25,9 @@ vm_groups:
       data_disks:
         - size: 102400
     networks:
-      - subnet_name: snet-1
+      - name: network1
+        cloud_meta:
+          subnet_name: snet-1
     security_groups:
       - name: security_group_1
     roles:
@@ -39,8 +43,10 @@ vm_groups:
       - size: 102400
       # name_convension: uuid   
     networks:
-      - subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      - name: network1
+        cloud_meta:
+          subnet_name: snet-1
+          load_balancer_name: load_balancer_1
     roles: # this is used to generate the deployment scripts
       - name: builtin/lamp_web_role
   
@@ -54,8 +60,9 @@ vm_groups:
       - size: 102400
       # name_convension: uuid   
     networks:
-      - subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      - name: network1
+        cloud_meta:
+          subnet_name: snet-1
     roles: # this is used to generate the deployment scripts
       - name: builtin/gluster_server_node
 
@@ -69,21 +76,27 @@ vm_groups:
       - size: 102400
       # name_convension: uuid   
     networks:
-      - subnet_name: snet-1
-        load_balancer_name: load_balancer_1
+      - name: network1
+        cloud_meta:
+          subnet_name: snet-1
     roles: # this is used to generate the deployment scripts
       - name: builtin/redis_server
 
-vnets:
-  - name: vnet-1
+networks:
+  - name: network1
+    type: vnet
+    cloud_meta:
+      virtual_network_name: vnet1
     subnets:
-      - name: snet-1
-        range: 10.0.0.0/16
-        gateway: 10.0.0.1
+      - range: 10.10.0.0/24
+        gateway: 10.10.0.1
+        cloud_meta:
+          name: snet-1
 
 load_balancers:
   - name: load_balancer_1
-    sku: Standard
+    cloud_meta:
+      sku: Standard
 
 databases:
   - migrate_from: # indicate where we should migrate from.
