@@ -32,10 +32,9 @@ vm_groups:
     networks:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
+        network_security_group_name: security_group_1
         outputs:
           - ip: 192.168.0.3
-    security_groups:
-      - name: security_group_1
     roles:
       - name: builtin/jumpbox
 
@@ -80,6 +79,28 @@ load_balancers:
   - name: load_balancer_1
     sku: Standard
 
+network_security_groups:
+  - name: security_group_1
+    security_rules:
+      - name: allow-ssh
+        priority: 100
+        direction: Inbound
+        access: Allow
+        protocol: Tcp
+        source_port_range: "*"
+        destination_port_range: 22
+        source_address_prefix: "*"
+        destination_address_prefix: "*"
+      - name: allow-http
+        priority: 200
+        direction: Inbound
+        access: Allow
+        protocol: Tcp
+        source_port_range: "*"
+        destination_port_range: 80
+        source_address_prefix: "*"
+        destination_address_prefix: "*"
+    
 storage_accounts:
   - name: storage_account_1
     location: eastus
