@@ -1,6 +1,6 @@
 ---
 schema: v0.1
-region: eastus
+location: eastus
 
 iaas: azure # this can be azure or some other platform
 
@@ -37,6 +37,8 @@ vm_groups:
           - ip: 192.168.0.3
     roles:
       - name: builtin/jumpbox
+        vars:
+          jumpbox_public_key: (( jumpbbox_public_key ))
 
   - name: d2v3_group
     meta:
@@ -58,12 +60,10 @@ vm_groups:
           - ip: 192.168.0.6
     roles: # this is used to generate the deployment scripts
       - name: builtin/php
-        tags: ["foo"]
         vars:
           dir: '/opt/a'
           app_port: 5000
       - name: myproject/role
-        tags: ["bar"]
         vars:
           dir: '/opt/a'
           app_port: 5000
