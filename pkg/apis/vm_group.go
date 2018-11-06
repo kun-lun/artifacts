@@ -10,7 +10,6 @@ type VMGroup struct {
 	Type         string           `yaml:"type"`
 	Storage      *VMStorage       `yaml:"storage"`
 	NetworkInfos []VMNetworkInfo  `yaml:"networks"`
-	Networks     []VMNetWork      `yaml:"anything,skip"`
 	Roles        []Role           `yaml:"roles"`
 }
 
@@ -25,16 +24,11 @@ type VMStorage struct {
 	AzureFiles []AzureFile `yaml:"azure_files"`
 }
 
-type VMNetWork struct {
-	Subnet       *Subnet
-	LoadBalancer *LoadBalancer
-	Outputs      []VMNetworkOutput
-}
-
 type VMNetworkInfo struct {
-	SubnetName       string            `yaml:"subnet_name"`
-	LoadBalancerName string            `yaml:"load_balancer_name"`
-	Outputs          []VMNetworkOutput `yaml:"outputs,omitempty"`
+	SubnetName               string            `yaml:"subnet_name"`
+	LoadBalancerName         string            `yaml:"load_balancer_name"`
+	NetworkSecurityGroupName string            `yaml:"network_security_group_name"`
+	Outputs                  []VMNetworkOutput `yaml:"outputs,omitempty"`
 }
 
 type VMNetworkOutput struct {
