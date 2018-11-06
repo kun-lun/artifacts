@@ -1,6 +1,6 @@
 ---
 schema: v0.1
-region: eastus
+location: eastus
 
 iaas: azure # this can be azure or some other platform
 
@@ -28,6 +28,8 @@ vm_groups:
       - name: security_group_1
     roles:
       - name: builtin/jumpbox
+        vars:
+          jumpbox_public_key: (( jumpbbox_public_key ))
 
   - name: web_servers
     count: 2
