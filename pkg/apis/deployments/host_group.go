@@ -1,6 +1,11 @@
 package deployments
 
+const (
+	JumpboxHostGroupType = "jumpbox"
+)
+
 type HostGroup struct {
-	Name  string
-	Hosts []Host
+	Name      string
+	GroupType string
+	Hosts     []Host
 }
