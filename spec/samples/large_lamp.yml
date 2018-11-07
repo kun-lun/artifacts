@@ -27,6 +27,12 @@ vm_groups:
           caching: ReadWrite
           create_option: Empty
           disk_size_gb: 100
+    os_profile:
+      admin_name: kunlun
+      linux_configuration:
+        ssh:
+          public_keys:
+            - 'rsa xx @kunlunhost'
     networks:
       - subnet_name: snet-1
         public_ip: static
@@ -45,6 +51,12 @@ vm_groups:
       managed_disk_type: Standard_LRS
       caching: ReadWrite
       create_option: FromImage
+    os_profile:
+      admin_name: kunlun
+      linux_configuration:
+        ssh:
+          public_keys:
+            - 'rsa xx @kunlunhost'
     data_disks:
       - managed_disk_type: Standard_LRS
         caching: ReadWrite

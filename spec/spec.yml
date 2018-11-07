@@ -14,6 +14,12 @@ vm_groups:
     count: 1
     sku: Standard_DS1_v1
     type: vm # this can be vm or vmss
+    os_profile:
+      admin_name: kunlun
+      linux_configuration:
+        ssh:
+          public_keys:
+            - 'rsa xx @kunlunhost'
     storage:
       image:
         offer: offer1
@@ -62,6 +68,12 @@ vm_groups:
           create_option: Empty
           disk_size_gb: 100
         # name_convension: uuid
+    os_profile:
+      admin_name: kunlun
+      linux_configuration:
+        ssh:
+          public_keys:
+            - 'rsa xx @kunlunhost'
     networks:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
