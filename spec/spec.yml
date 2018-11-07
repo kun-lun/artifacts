@@ -91,7 +91,7 @@ load_balancers:
 
 network_security_groups:
   - name: security_group_1
-    security_rules:
+    network_security_rules:
       - name: allow-ssh
         priority: 100
         direction: Inbound
