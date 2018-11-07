@@ -12,9 +12,23 @@ type VMGroup struct {
 	Count        int             `yaml:"count"`
 	SKU          string          `yaml:"sku"`
 	Type         string          `yaml:"type"`
+	OSProfile    VMOSProfile     `yaml:"os_profile"`
 	Storage      *VMStorage      `yaml:"storage"`
 	NetworkInfos []VMNetworkInfo `yaml:"networks"`
 	Roles        []Role          `yaml:"roles"`
+}
+
+type VMOSProfile struct {
+	AdminName          string             `yaml:"admin_name"`
+	LinuxConfiguration LinuxConfiguration `yaml:"linux_configuration"`
+}
+
+type LinuxConfiguration struct {
+	SSH SSH `yaml:"ssh"`
+}
+
+type SSH struct {
+	PublicKeys []string `yaml:"public_keys,omitempty"`
 }
 
 type VMStorage struct {
