@@ -66,8 +66,8 @@ var _ = Describe("Manifest", func() {
 				Name: "jumpbox",
 				Meta: yaml.MapSlice{
 					{
-						Key:   "jumpbox",
-						Value: "true",
+						Key:   "group_type",
+						Value: "jumpbox",
 					},
 				},
 				SKU:   VMStandardDS1V2,
