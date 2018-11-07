@@ -81,7 +81,9 @@ var _ = Describe("Manifest", func() {
 						Version:   "latest",
 					},
 					OSDisk: &OSDisk{
-						Size: 10240,
+						ManagedDiskType: "Standard_LRS",
+						Caching:         "ReadWrite",
+						CreateOption:    "FromImage",
 					},
 					DataDisks: []DataDisk{
 						{
@@ -113,7 +115,9 @@ var _ = Describe("Manifest", func() {
 				Type:  "VM",
 				Storage: &VMStorage{
 					OSDisk: &OSDisk{
-						Size: 10240,
+						ManagedDiskType: "Standard_LRS",
+						Caching:         "ReadWrite",
+						CreateOption:    "FromImage",
 					},
 					DataDisks: []DataDisk{
 						{

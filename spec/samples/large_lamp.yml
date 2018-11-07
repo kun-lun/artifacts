@@ -19,7 +19,9 @@ vm_groups:
         sku: sku1
         version: latest
       os_disk:
-        size: 10240
+        managed_disk_type: Standard_LRS
+        caching: ReadWrite
+        create_option: FromImage
       data_disks:
         - size: 102400
     networks:
@@ -37,7 +39,9 @@ vm_groups:
     sku: Standard_B1ms
     type: vm # this can be vm or vmss
     os_disk:
-      size: 10240
+      managed_disk_type: Standard_LRS
+      caching: ReadWrite
+      create_option: FromImage
     data_disks:
       - size: 102400
       # name_convension: uuid   
@@ -52,7 +56,9 @@ vm_groups:
     sku: Standard_B1ms
     type: vm # this can be vm or vmss
     os_disk:
-      size: 10240
+      managed_disk_type: Standard_LRS
+      caching: ReadWrite
+      create_option: FromImage
     data_disks:
       - size: 102400
       # name_convension: uuid   
@@ -67,7 +73,9 @@ vm_groups:
     sku: Standard_B1ms
     type: vm
     os_disk:
-      size: 10240
+      managed_disk_type: Standard_LRS
+      caching: ReadWrite
+      create_option: FromImage
     data_disks:
       - size: 102400
       # name_convension: uuid   

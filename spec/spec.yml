@@ -21,7 +21,9 @@ vm_groups:
         sku: sku1
         version: latest
       os_disk:
-        size: 10240
+        managed_disk_type: Standard_LRS
+        caching: ReadWrite
+        create_option: FromImage
       data_disks:
         - size: 102400
         # - name_convension: uuid # this canbe uuid/group, if uuid, one uuid would be gnerated as name
