@@ -24,6 +24,7 @@ vm_groups:
         - size: 102400
     networks:
       - subnet_name: snet-1
+        public_ip: static
     security_groups:
       - name: security_group_1
     roles:

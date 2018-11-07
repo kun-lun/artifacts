@@ -101,6 +101,7 @@ var _ = Describe("Manifest", func() {
 						SubnetName:               networks[0].Subnets[0].Name,
 						LoadBalancerName:         loadBalancers[0].Name,
 						NetworkSecurityGroupName: networkSecurityGroups[0].Name,
+						PublicIP:                 "dynamic",
 					},
 				},
 				Roles: []Role{},

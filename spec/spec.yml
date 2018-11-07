@@ -33,6 +33,7 @@ vm_groups:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
         network_security_group_name: security_group_1
+        public_ip: static # optional values: [static, dynamic, no], default value is "no"
         outputs:
           - ip: 192.168.0.3
             public_ip: 202.120.40.101

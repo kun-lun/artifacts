@@ -28,6 +28,7 @@ type VMNetworkInfo struct {
 	SubnetName               string            `yaml:"subnet_name"`
 	LoadBalancerName         string            `yaml:"load_balancer_name"`
 	NetworkSecurityGroupName string            `yaml:"network_security_group_name"`
+	PublicIP                 string            `yaml:"public_ip"`
 	Outputs                  []VMNetworkOutput `yaml:"outputs,omitempty"`
 }
 
