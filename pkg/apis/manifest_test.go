@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"reflect"
 
+	"gopkg.in/yaml.v2"
+
 	"github.com/go-test/deep"
 	. "github.com/kun-lun/artifacts/pkg/apis"
 	. "github.com/onsi/ginkgo"
@@ -61,7 +63,13 @@ var _ = Describe("Manifest", func() {
 
 		vmGroups := []VMGroup{
 			{
-				Name:  "jumpbox",
+				Name: "jumpbox",
+				Meta: yaml.MapSlice{
+					{
+						Key:   "jumpbox",
+						Value: "true",
+					},
+				},
 				SKU:   VMStandardDS1V2,
 				Count: 1,
 				Type:  "VM",
@@ -179,6 +187,8 @@ var _ = Describe("Manifest", func() {
 					}
 				}
 				Expect(deep_equal).To(BeTrue())
+				Expect(mCopy.VMGroups[0].Meta[0].Key == "jumpbox")
+				Expect(mCopy.VMGroups[0].Meta[0].Value == "true")
 			})
 		})
 	})

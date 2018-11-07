@@ -10,7 +10,7 @@ platform:
 vm_groups:
   - name: jumpbox
     meta:
-      autostop: false
+      jumpbox: true
     count: 1
     sku: Standard_DS1_v1
     type: vm # this can be vm or vmss
@@ -42,7 +42,6 @@ vm_groups:
 
   - name: d2v3_group
     meta:
-      autostop: false
     count: 2
     sku: Standard_D2_v3
     type: vm # this can be vm or vmss
