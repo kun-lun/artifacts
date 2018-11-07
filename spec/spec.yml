@@ -25,7 +25,10 @@ vm_groups:
         caching: ReadWrite
         create_option: FromImage
       data_disks:
-        - size: 102400
+        - managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          create_option: Empty
+          disk_size_gb: 100
         # - name_convension: uuid # this canbe uuid/group, if uuid, one uuid would be gnerated as name
       azure_files:
         - storage_account: storage_account_1
@@ -54,7 +57,10 @@ vm_groups:
       os_disk:
         size: 10240
       data_disks:
-        - size: 102400
+        - managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          create_option: Empty
+          disk_size_gb: 100
         # name_convension: uuid
     networks:
       - subnet_name: snet-1

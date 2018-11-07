@@ -23,7 +23,10 @@ vm_groups:
         caching: ReadWrite
         create_option: FromImage
       data_disks:
-        - size: 102400
+        - managed_disk_type: Standard_LRS
+          caching: ReadWrite
+          create_option: Empty
+          disk_size_gb: 100
     networks:
       - subnet_name: snet-1
         public_ip: static
@@ -43,7 +46,10 @@ vm_groups:
       caching: ReadWrite
       create_option: FromImage
     data_disks:
-      - size: 102400
+      - managed_disk_type: Standard_LRS
+        caching: ReadWrite
+        create_option: Empty
+        disk_size_gb: 100
       # name_convension: uuid   
     networks:
       - subnet_name: snet-1
@@ -60,7 +66,10 @@ vm_groups:
       caching: ReadWrite
       create_option: FromImage
     data_disks:
-      - size: 102400
+      - managed_disk_type: Standard_LRS
+        caching: ReadWrite
+        create_option: Empty
+        disk_size_gb: 100
       # name_convension: uuid   
     networks:
       - subnet_name: snet-1
@@ -77,7 +86,10 @@ vm_groups:
       caching: ReadWrite
       create_option: FromImage
     data_disks:
-      - size: 102400
+      - managed_disk_type: Standard_LRS
+        caching: ReadWrite
+        create_option: Empty
+        disk_size_gb: 100
       # name_convension: uuid   
     networks:
       - subnet_name: snet-1

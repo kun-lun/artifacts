@@ -87,7 +87,10 @@ var _ = Describe("Manifest", func() {
 					},
 					DataDisks: []DataDisk{
 						{
-							Size: 102400,
+							ManagedDiskType: "Standard_LRS",
+							Caching:         "ReadWrite",
+							CreateOption:    "FromImage",
+							DiskSizeGB:      100,
 						},
 					},
 					AzureFiles: []AzureFile{
@@ -121,7 +124,10 @@ var _ = Describe("Manifest", func() {
 					},
 					DataDisks: []DataDisk{
 						{
-							Size: 102400,
+							ManagedDiskType: "Standard_LRS",
+							Caching:         "ReadWrite",
+							CreateOption:    "FromImage",
+							DiskSizeGB:      100,
 						},
 					},
 					AzureFiles: []AzureFile{},
