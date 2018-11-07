@@ -32,7 +32,9 @@ type VMNetworkInfo struct {
 }
 
 type VMNetworkOutput struct {
-	IP string `yaml:"ip"`
+	IP       string `yaml:"ip"`
+	PublicIP string `yaml:"public_ip"`
+	Host     string `yaml:"host"`
 }
 
 const (
