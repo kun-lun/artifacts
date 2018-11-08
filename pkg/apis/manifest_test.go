@@ -39,6 +39,29 @@ var _ = Describe("Manifest", func() {
 			{
 				Name: "kunlun-wenserver-lb",
 				SKU:  "standard",
+				BackendAddressPools: []LoadBalancerBackendAddressPool{
+					{
+						Name: "backend-address-pool-1",
+					},
+				},
+				HealthProbes: []LoadBalancerHealthProbe{
+					{
+						Name:        "http-probe",
+						Protocol:    "Http",
+						Port:        80,
+						RequestPath: "/",
+					},
+				},
+				Rules: []LoadBalancerRule{
+					{
+						Name:                   "http_rule",
+						Protocol:               "Tcp",
+						FrontendPort:           80,
+						BackendPort:            80,
+						BackendAddressPoolName: "backend-address-pool-1",
+						HealthProbeName:        "http-probe",
+					},
+				},
 			},
 		}
 
@@ -103,10 +126,11 @@ var _ = Describe("Manifest", func() {
 				},
 				NetworkInfos: []VMNetworkInfo{
 					{
-						SubnetName:               networks[0].Subnets[0].Name,
-						LoadBalancerName:         loadBalancers[0].Name,
-						NetworkSecurityGroupName: networkSecurityGroups[0].Name,
-						PublicIP:                 "dynamic",
+						SubnetName:                         networks[0].Subnets[0].Name,
+						LoadBalancerName:                   loadBalancers[0].Name,
+						LoadBalancerBackendAddressPoolName: loadBalancers[0].BackendAddressPools[0].Name,
+						NetworkSecurityGroupName:           networkSecurityGroups[0].Name,
+						PublicIP:                           "dynamic",
 					},
 				},
 				Roles: []Role{},
@@ -134,8 +158,9 @@ var _ = Describe("Manifest", func() {
 				},
 				NetworkInfos: []VMNetworkInfo{
 					{
-						SubnetName:       networks[0].Subnets[0].Name,
-						LoadBalancerName: loadBalancers[0].Name,
+						SubnetName:                         networks[0].Subnets[0].Name,
+						LoadBalancerName:                   loadBalancers[0].Name,
+						LoadBalancerBackendAddressPoolName: loadBalancers[0].BackendAddressPools[0].Name,
 					},
 				},
 				Roles: []Role{},

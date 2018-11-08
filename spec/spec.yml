@@ -43,6 +43,7 @@ vm_groups:
     networks:
       - subnet_name: snet-1
         load_balancer_name: load_balancer_1
+        load_balancer_backend_address_pool_name: backend_address_pool_1
         network_security_group_name: security_group_1
         public_ip: static # optional values: [static, dynamic, no], default value is "no"
         outputs:
@@ -100,6 +101,23 @@ vnets:
 load_balancers:
   - name: load_balancer_1
     sku: Standard
+    backend_address_pools:
+      - name: backend_address_pool_1
+    health_probes:
+      - name: http_probe
+        protocol: Http # optional values: [Tcp, Http, Https]
+        port: 80
+        request_path: "/" # required if protocol is set to Http or Https. Otherwise, it is not allowed.
+      - name: ssh_probe
+        protocol: Tcp
+        port: 22
+    rules:
+      - name: http_rule
+        protocol: Tcp # optional values: [Tcp, Udp, All]
+        frontend_port: 80
+        backend_port: 80
+        backend_address_pool_name: backend_address_pool_1
+        health_probe_name: http_probe
 
 network_security_groups:
   - name: security_group_1
