@@ -175,7 +175,7 @@ var _ = Describe("Manifest", func() {
 			},
 		}
 
-		databases := []Database{
+		mysqlDatabases := []MysqlDatabase{
 			{
 				MigrationInformation: &MigrationInformation{
 					OriginHost:     "asd",
@@ -183,9 +183,10 @@ var _ = Describe("Manifest", func() {
 					OriginUsername: "asd",
 					OriginPassword: "asd",
 				},
-				Engine:              MysqlDB,
-				EngineVersion:       "5.7",
+				Version:             "5.7",
 				Cores:               2,
+				Tier:                "GeneralPurpose",
+				Family:              "Gen5",
 				Storage:             5,
 				BackupRetentionDays: 35,
 				Username:            "dbuser",
@@ -204,7 +205,7 @@ var _ = Describe("Manifest", func() {
 			LoadBalancers:         loadBalancers,
 			StorageAccounts:       storageAccounts,
 			NetworkSecurityGroups: networkSecurityGroups,
-			Databases:             databases,
+			MysqlDatabases:        mysqlDatabases,
 		}
 
 	})
