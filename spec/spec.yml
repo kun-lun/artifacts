@@ -1,7 +1,8 @@
 ---
 schema: v0.1
 
-resource_group_name: kunlun
+env_name: kunlun # `env_name` will be used as prefix of created resources
+resource_group_name: mykunlun
 location: eastus
 
 iaas: azure # this can be azure or some other platform

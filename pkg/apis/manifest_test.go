@@ -199,9 +199,10 @@ var _ = Describe("Manifest", func() {
 		// The checker add needed resource to manifest
 		m = &Manifest{
 			Schema:                "v0.1",
+			EnvName:               "kunlun",
 			IaaS:                  "azure",
 			Location:              "eastus",
-			ResourceGroupName:     "kunlun",
+			ResourceGroupName:     "mykunlun",
 			Platform:              &platform,
 			VMGroups:              vmGroups,
 			VNets:                 networks,
