@@ -16,7 +16,7 @@ type Manifest struct {
 	LoadBalancers         []LoadBalancer         `yaml:"load_balancers,omitempty"`
 	StorageAccounts       []StorageAccount       `yaml:"storage_accounts,omitempty"`
 	NetworkSecurityGroups []NetworkSecurityGroup `yaml:"network_security_groups,omitempty"`
-	Databases             []Database             `yaml:"databases,omitempty"`
+	MysqlDatabases        []MysqlDatabase        `yaml:"mysql_databases,omitempty"`
 }
 
 func (m *Manifest) validate() error {

@@ -147,19 +147,17 @@ storage_accounts:
     sku: standard
   # this is only for the service based database, if you want to deploy the iaas version.
   # please use the roles instead.
-databases:
+mysql_databases:
   - migrate_from: # indicate where we should migrate from.
       origin_host: asd
       origin_database: asd
       origin_username: asd
       origin_password: asd
-    engine: mysql
-    engine_version: "5.7"
+    version: "5.7"
     cores: 2
-    storage: 5
+    tier: GeneralPurpose # Possible values: ["Basic", "GeneralPurpose", "MemoryOptimized"]
+    family: Gen5 # Possible values: ["Gen4", "Gen5"]
+    storage: 5 # storage in GB, optional values from 5 to 4096
     backup_retention_days: 35
-    username: "binxi"
+    username: "kunlunuser"
     password: "abcd1234!"
-
-
-
