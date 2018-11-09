@@ -8,6 +8,7 @@ import (
 // use this manifest
 type Manifest struct {
 	Schema                string                 `yaml:"schema,omitempty"`
+	ResourceGroupName     string                 `yaml:"resource_group_name"`
 	Location              string                 `yaml:"location,omitempty"`
 	IaaS                  string                 `yaml:"iaas,omitempty"`
 	Platform              *Platform              `yaml:"platform,omitempty"`

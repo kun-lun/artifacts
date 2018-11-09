@@ -201,6 +201,7 @@ var _ = Describe("Manifest", func() {
 			Schema:                "v0.1",
 			IaaS:                  "azure",
 			Location:              "eastus",
+			ResourceGroupName:     "kunlun",
 			Platform:              &platform,
 			VMGroups:              vmGroups,
 			VNets:                 networks,

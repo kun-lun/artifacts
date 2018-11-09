@@ -1,5 +1,7 @@
 ---
 schema: v0.1
+
+resource_group_name: kunlun
 location: eastus
 
 iaas: azure # this can be azure or some other platform
