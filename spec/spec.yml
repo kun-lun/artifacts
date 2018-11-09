@@ -153,11 +153,14 @@ mysql_databases:
       origin_database: asd
       origin_username: asd
       origin_password: asd
+    name: "kunlun-mysql"      
     version: "5.7"
     cores: 2
     tier: GeneralPurpose # Possible values: ["Basic", "GeneralPurpose", "MemoryOptimized"]
     family: Gen5 # Possible values: ["Gen4", "Gen5"]
     storage: 5 # storage in GB, optional values from 5 to 4096
     backup_retention_days: 35
+    ssl_enforcement: Enabled # Possible values: ["Enabled", "Disabled"]
     username: "kunlunuser"
     password: "abcd1234!"
+    
