@@ -25,7 +25,8 @@ var _ = Describe("Manifest", func() {
 
 		networks := []VirtualNetwork{
 			{
-				Name: "vnet-1",
+				Name:         "vnet-1",
+				AddressSpace: "10.0.0.0/16",
 				Subnets: []Subnet{
 					{
 						Range:   "10.10.0.0/24",
@@ -38,7 +39,7 @@ var _ = Describe("Manifest", func() {
 		loadBalancers := []LoadBalancer{
 			{
 				Name: "kunlun-wenserver-lb",
-				SKU:  "standard",
+				SKU:  "Standard",
 				BackendAddressPools: []LoadBalancerBackendAddressPool{
 					{
 						Name: "backend-address-pool-1",
@@ -95,7 +96,7 @@ var _ = Describe("Manifest", func() {
 				},
 				SKU:   VMStandardDS1V2,
 				Count: 1,
-				Type:  "VM",
+				Type:  "vm",
 				Storage: &VMStorage{
 					Image: &Image{
 						Offer:     "offer1",
@@ -139,7 +140,7 @@ var _ = Describe("Manifest", func() {
 				Name:  "d2v3_group",
 				SKU:   VMStandardDS1V2,
 				Count: 2,
-				Type:  "VM",
+				Type:  "vm",
 				Storage: &VMStorage{
 					OSDisk: &OSDisk{
 						ManagedDiskType: "Standard_LRS",
