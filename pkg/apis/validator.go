@@ -20,8 +20,10 @@ func (v validator) Validate(m Manifest) error {
 func newValidator() validator {
 	return validator{
 		resourceValidators: []resourceValidator{
-			newVMGroupValidator(),
-			newLoadBalancerValidator(),
+			vmGroupValidator,
+			loadBalancerValidator,
+			virtualNetworkValidator,
+			mysqlDatabaseValidator,
 		},
 	}
 }

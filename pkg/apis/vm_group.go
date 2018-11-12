@@ -53,26 +53,24 @@ type VMNetworkOutput struct {
 	Host     string `yaml:"host"`
 }
 
-func newVMGroupValidator() func(Manifest) error {
-	return func(m Manifest) error {
-		occuredNames := make(map[string]bool)
-		for _, vmGroup := range m.VMGroups {
-			if vmGroup.Name == "" {
-				return validationError("vm group name can't be empty")
-			}
-			if occuredNames[vmGroup.Name] {
-				return validationError("vm group name must be unique, but %s occurs at least twice", vmGroup.Name)
-			}
-			occuredNames[vmGroup.Name] = true
-			if vmGroup.Count <= 0 {
-				return validationError("count in vm group %s must be greater than 0", vmGroup.Name)
-			}
-			if vmGroup.Type != "vm" {
-				return validationError("type in vm group %s is %s, but only vm is supported for now", vmGroup.Type, vmGroup.Name)
-			}
+func vmGroupValidator(m Manifest) error {
+	occuredNames := make(map[string]bool)
+	for _, vmGroup := range m.VMGroups {
+		if vmGroup.Name == "" {
+			return validationError("vm group name can't be empty")
 		}
-		return nil
+		if occuredNames[vmGroup.Name] {
+			return validationError("vm group name must be unique, but %s occurs at least twice", vmGroup.Name)
+		}
+		occuredNames[vmGroup.Name] = true
+		if vmGroup.Count <= 0 {
+			return validationError("count in vm group %s must be greater than 0", vmGroup.Name)
+		}
+		if vmGroup.Type != "vm" {
+			return validationError("type in vm group %s is %s, but only vm is supported for now", vmGroup.Type, vmGroup.Name)
+		}
 	}
+	return nil
 }
 
 const (
