@@ -11,7 +11,7 @@ vm_groups:
   - name: jumpbox
     count: 1
     sku: Standard_B1s
-    type: vm
+    type: vm # this can be vm or vmss, currently only vm is supported
     os_profile:
       admin_name: kunlun
       linux_configuration:
@@ -42,7 +42,7 @@ vm_groups:
   - name: web-servers
     count: 1
     sku: Standard_B1s
-    type: vmss # this can be vm or vmss
+    type: vm 
     os_profile:
       admin_name: kunlun
       linux_configuration:
