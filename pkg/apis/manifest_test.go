@@ -25,7 +25,8 @@ var _ = Describe("Manifest", func() {
 
 		networks := []VirtualNetwork{
 			{
-				Name: "vnet-1",
+				Name:         "vnet-1",
+				AddressSpace: "10.0.0.0/16",
 				Subnets: []Subnet{
 					{
 						Range:   "10.10.0.0/24",

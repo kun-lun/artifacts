@@ -1,8 +1,9 @@
 package apis
 
 type VirtualNetwork struct {
-	Name    string   `yaml:"name"`
-	Subnets []Subnet `yaml:"subnets"`
+	Name         string   `yaml:"name"`
+	AddressSpace string   `yaml:"address_space"`
+	Subnets      []Subnet `yaml:"subnets"`
 }
 
 func virtualNetworkValidator(m Manifest) error {
