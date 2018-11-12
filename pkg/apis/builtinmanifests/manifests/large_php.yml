@@ -9,6 +9,8 @@ iaas: azure # this can be azure or some other platform
 
 vm_groups:
   - name: jumpbox
+    meta:
+      group_type: jumpbox
     count: 1
     sku: Standard_B1s
     type: vm # this can be vm or vmss, currently only vm is supported
