@@ -133,11 +133,6 @@ network_security_groups:
         source_address_prefix: "*"
         destination_address_prefix: "*"
 
-storage_accounts:
-  - name: storage_account_1
-    location: ((location))
-    sku: standard
-
 variables:
   - name: admin_ssh
     type: ssh
