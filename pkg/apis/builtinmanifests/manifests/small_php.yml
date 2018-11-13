@@ -41,6 +41,8 @@ vm_groups:
       - subnet_name: snet-1
         network_security_group_name: ssh_nsg
         public_ip: static
+    roles:
+      - name: kunlun.datadisk
 
   - name: web-servers
     count: 1
@@ -74,6 +76,8 @@ vm_groups:
         load_balancer_backend_address_pool_name: backend_address_pool_1
         network_security_group_name: webserver_nsg
     roles: # this is used to generate the deployment scripts
+      - name: kunlun.datadisk
+      - name: kunlun.deploysourcecode
       - name: kunlun.php
 
 vnets:
