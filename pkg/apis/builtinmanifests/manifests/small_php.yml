@@ -12,7 +12,6 @@ vm_groups:
     meta:
       group_type: jumpbox
     count: 1
-    meta: 
     sku: Standard_B1s
     type: vm # this can be vm or vmss, currently only vm is supported
     os_profile:
