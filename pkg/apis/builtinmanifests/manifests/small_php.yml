@@ -78,8 +78,8 @@ vm_groups:
       - name: kunlun.datadisk
       - name: kunlun.deploysourcecode
         vars:
-          project_source_code_path: (( project_source_code_path ))
-          project_git_revision: (( project_git_revision ))
+          project_source_code_path: ((project_source_code_path))
+          project_git_revision: ((project_git_revision))
       - name: kunlun.php
 
 vnets:
