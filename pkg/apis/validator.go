@@ -29,5 +29,8 @@ func newValidator() validator {
 }
 
 func validationError(errorMessage string, a ...interface{}) error {
-	return fmt.Errorf("validation error: %s", fmt.Sprintf(errorMessage, a))
+	if len(a) > 0 {
+		return fmt.Errorf("validation error: %s", fmt.Sprintf(errorMessage, a))
+	}
+	return fmt.Errorf("validation error: %s", errorMessage)
 }

@@ -1,5 +1,9 @@
 package apis
 
+import (
+	"regexp"
+)
+
 // Database contains information to deploy a database on VM(s)
 type MysqlDatabase struct {
 	Name                 string                `yaml:"name"`
@@ -25,8 +29,8 @@ type MigrationInformation struct {
 func mysqlDatabaseValidator(m Manifest) error {
 	for _, db := range m.MysqlDatabases {
 		occuredNames := make(map[string]bool)
-		if db.Name == "" {
-			return validationError("database name can't be empty")
+		if match, _ := regexp.MatchString("^[0-9,a-z]+$", db.Name); !match {
+			return validationError("database name must be a non-empty string consisting of lowercase letters and numbers, but found %s", db.Name)
 		}
 		if occuredNames[db.Name] {
 			return validationError("database name must be unique, but %s occurs at least twice", db.Name)

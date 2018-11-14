@@ -178,7 +178,7 @@ var _ = Describe("Manifest", func() {
 
 		mysqlDatabases := []MysqlDatabase{
 			{
-				Name: "kunlun-mysql",
+				Name: "kunlundb",
 				MigrationInformation: &MigrationInformation{
 					OriginHost:     "asd",
 					OriginDatabase: "asd",
