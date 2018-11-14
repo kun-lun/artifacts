@@ -97,9 +97,9 @@ load_balancers:
       - name: backend_address_pool_1
     health_probes:
       - name: http_probe
-        protocol: Http # optional values: [Tcp, Http, Https]
+        protocol: Tcp # optional values: [Tcp, Http, Https]
         port: 80
-        request_path: "/" # required if protocol is set to Http or Https. Otherwise, it is not allowed.
+        # request_path: "/" # required if protocol is set to Http or Https. Otherwise, it is not allowed.
       - name: ssh_probe
         protocol: Tcp
         port: 22
