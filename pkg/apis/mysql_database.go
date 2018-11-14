@@ -29,8 +29,8 @@ type MigrationInformation struct {
 func mysqlDatabaseValidator(m Manifest) error {
 	for _, db := range m.MysqlDatabases {
 		occuredNames := make(map[string]bool)
-		if match, _ := regexp.MatchString("^[0-9,a-z]+$", db.Name); !match {
-			return validationError("database name must be a non-empty string consisting of lowercase letters and numbers, but found %s", db.Name)
+		if match, _ := regexp.MatchString("^[0-9a-z]+$", db.Name); !match {
+			return validationError("database name must be a non-empty string consisting of lowercase letters and numbers, but found \"%s\"")
 		}
 		if occuredNames[db.Name] {
 			return validationError("database name must be unique, but %s occurs at least twice", db.Name)
